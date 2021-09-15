@@ -15,9 +15,11 @@ function calculateGrades(e) {
     let somaDasNotas = 0;
 
     Object.values(notas).forEach((n) => somaDasNotas += n);
-    const mediaDoAluno = (somaDasNotas / 4).toFixed(1);
+    const mediaDoAluno = Number((somaDasNotas / 4).toFixed(1));
 
     const resultado = mediaDoAluno >= media ? `Você foi APROVADO! Nota: ${mediaDoAluno}` : `REPROVADO! Chora não... Nota: ${mediaDoAluno}`;
+
+    console.log(mediaDoAluno);
 
     const resultElement = document.getElementById('result01');
     resultElement.innerText = resultado;
