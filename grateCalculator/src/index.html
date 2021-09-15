@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imersão Dev Alura - Aula 01</title>
+
+    <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="content">
+            <h1 class="page-title">
+                Calculadora de Notas</h1>
+            <p class="page-subtitle">
+                Descubra qual a sua média de nota de todas as provas!
+            </p>
+            <img src="https://media.giphy.com/media/fRhSHzQ4NXOdrHIZJd/giphy.gif?cid=ecf05e4710g5lkwslk9dtz0bkw3tlqxcjjfzdf2n7kb791qh&rid=giphy.gif&ct=g"
+                class="page-logo" alt="">
+
+            <div class="input-container">
+
+                <h3>Insira suas notas abaixo:</h3>
+
+                <div class="input-group">
+                    <input onChange="getGrades(this)" placeholder="Primeiro Bimestre" type="number" class="input-content"
+                        id="nota1">
+                    <input onChange="getGrades(this)" placeholder="Segundo Bimestre" type="number" class="input-content"
+                        id="nota2">
+                    <input onChange="getGrades(this)" placeholder="Terceiro Bimestre" type="number" class="input-content"
+                        id="nota3">
+                    <input onChange="getGrades(this)" placeholder="Quarto Bimestre" type="number" class="input-content"
+                        id="nota4">
+                </div>
+
+            </div>
+            
+            <p hidden class="result-grade" id="result01"></p>
+
+            <div class="calculate-btn">
+                <button onClick="calculateGrades()" id="calc-btn">Calcular</button>
+            </div>
+
+        </div>
+    </div>
+
+    <a href="https://alura.com.br/" target="_blank">
+        <img src="https://www.alura.com.br/assets/img/home/alura-logo.svg" alt="" class="alura-logo">
+    </a>
+
+    <script type="text/javascript" src="/src/scripts.js"></script>
+
+</body>
+
+</html>
