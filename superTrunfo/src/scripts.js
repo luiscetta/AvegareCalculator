@@ -65,6 +65,37 @@ let cards = [card1, card2, card3, card4, card5, card6];
 let cardCpu;
 let cardPlayer;
 
+function getSelectedAttribute() {
+  let radioAttributes = document.getElementsByName("attribute");
+
+  for (let i = 0; i < radioAttributes.length; i++) {
+    if (radioAttributes[i].checked == true) {
+      return radioAttributes[i].value;
+    }
+  }
+}
+
+let hideCardPlayer = true;
+let hideCardCpu = true;
+let hidePlayButton = true;
+
+function toggleCards() {
+  hideCardPlayer = !hideCardPlayer;
+  hideCardCpu = !hideCardCpu;
+
+  const cardPlayer = document.getElementById("card-player");
+  const cardCpu = document.getElementById("card-cpu");
+  hideCardPlayer ? cardPlayer.setAttribute('hidden', true) : cardPlayer.removeAttribute('hidden');
+  hideCardCpu ? cardCpu.setAttribute('hidden', true) : cardCpu.removeAttribute('hidden');
+}
+
+function togglePlayBtn() {
+  hidePlayButton = !hidePlayButton;
+
+  const playBtn = document.getElementById("btnPlay");
+  hidePlayButton ? playBtn.setAttribute('hidden', true) : playBtn.removeAttribute('hidden');
+}
+
 function drawCards() {
   let indexCardCpu = parseInt(Math.random() * 6);
   cardCpu = cards[indexCardCpu];
@@ -82,16 +113,7 @@ function drawCards() {
   document.getElementById("btnPlay").disabled = false;
 
   displayCardPlayer();
-}
-
-function getSelectedAttribute() {
-  let radioAttributes = document.getElementsByName("attribute");
-
-  for (let i = 0; i < radioAttributes.length; i++) {
-    if (radioAttributes[i].checked == true) {
-      return radioAttributes[i].value;
-    }
-  }
+  toggleCards();
 }
 
 function play() {
@@ -110,7 +132,6 @@ function play() {
     resultElement.innerHTML = "<p class='final-result'> Empatou! </p>";
   }
 
-  document.getElementById("btnPlay").disabled = true;
   displayCardCpu();
 }
 
@@ -124,7 +145,7 @@ function displayCardPlayer() {
   let optionsText = "";
   for (let attribute in cardPlayer.attributes) {
     optionsText +=
-      "<input type='radio' name='attribute' value='" +
+      "<input type='radio' name='attribute' onChange='togglePlayBtn()' value='" +
       attribute +
       "'>" +
       attribute +
@@ -162,4 +183,5 @@ function displayCardCpu() {
   divCardCpu.innerHTML = frame + name + tagHTML + optionsText + "</div>";
 }
 
-// 
+
+// colocar o botão de tentar outra vez quando o resultado aparecer
